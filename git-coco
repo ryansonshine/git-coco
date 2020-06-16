@@ -84,22 +84,15 @@ clone() {
 }
 
 pr() {
-    branch=$1
-    target=$2
-
-    if [ -z "$branch" ]; then
-        branch=$(git rev-parse --abbrev-ref HEAD)
-    fi
-
-    if [ -z "$target" ]; then
-        target="master"
-    fi
+    title="$1"
+    branch=$(git rev-parse --abbrev-ref HEAD)
+    target="master"
 
     url=$(git remote get-url origin)
     repo=$(basename "$url")
 
     id=$(aws codecommit create-pull-request \
-        --title $branch \
+        --title $title \
         --targets repositoryName=$repo,sourceReference=$branch,destinationReference=$target \
         --output text \
         --query pullRequest.pullRequestId)

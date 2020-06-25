@@ -92,7 +92,7 @@ pr() {
     repo=$(basename "$url")
 
     id=$(aws codecommit create-pull-request \
-        --title $title \
+        --title "$title" \
         --targets repositoryName=$repo,sourceReference=$branch,destinationReference=$target \
         --output text \
         --query pullRequest.pullRequestId)
@@ -118,7 +118,7 @@ case $command in
         clone $2
         ;;
     pr)
-        pr $2 $3
+        pr "$2"
         ;;
     *)
         fail "Usage: git coco ls|create|clone|rm|init|pr"

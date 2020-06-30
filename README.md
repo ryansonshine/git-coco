@@ -28,6 +28,7 @@ Removes the named repository from CodeCommit.
 
 Performs the equivalent of a `git coco create` followed by `git coco clone`. The result is a checked out copy of a new CodeCommit repository
 
-* `git coco pr <from> <to>`
+* `git coco pr <title>`
 
-Creates a pull request for the current repository that compares `<from>` (or the current branch if omitted) with `<to>` (or `master` if omitted).
+Creates a pull request for the current repository that compares the current
+branch with `master` with a the title specified
